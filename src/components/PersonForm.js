@@ -37,15 +37,15 @@ export class PersonForm extends Component {
       <div className="person-form">
         <form id="person-info" className="person-info" onSubmit={this.savePerson}>
           <div>
-            <label for="firstName">First Name</label>
+            <label htmlFor="firstName">First Name</label>
             <input type="text" name="firstName" id="firstName" onChange={this.handleChange} />
           </div>
           <div>
-            <label for="lastName">Last Name</label>
+            <label htmlFor="lastName">Last Name</label>
             <input type="text" name="lastName" id="lastName" onChange={this.handleChange} />
           </div>
           <div>
-            <label for="city">City</label>
+            <label htmlFor="city">City</label>
             <input type="text" name="city" id="city" onChange={this.handleChange} />
           </div>
           <div className="submit-btn">
