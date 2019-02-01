@@ -1,32 +1,135 @@
+@media screen and (min-width: 968px) {
+  .App {
+    text-align: left;
+    padding: 2em;
+  }
+  form div label {
+    width: 10vw;
+  }
+  form div:last-of-type {
+    margin: 1em 0 0 10vw;
+  }
+  button {
+    padding: 0.5em 2.5em;
+  }
+  input {
+    padding: 0.5em;
+  }
+}
+
+@media screen and (max-width: 967px) {
+  .App {
+    padding: .25em;
+  }
+  form div label {
+    width: 25vw;
+  }
+  form div:last-of-type {
+    margin: 1em 0 0 25vw;
+  }
+  button {
+    padding: 0.25em 1em;
+  }
+  input {
+    padding: 0.25em;
+  }
+}
+
 .App {
-  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  text-align: left;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.person-form,
+.people-table {
+  padding: 2em;
+  border: 1px solid #555;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.person-form + .people-table {
+  margin-top: .5em;
+}
+
+.people-table table {
+  width: 100%;
+}
+
+.people-table table tr:nth-of-type(even) {
+  background: rgba(190, 192, 193, 0.1);
+}
+
+.people-table table tr td {
+  width: 15%;
+  padding: 0.15em .25em;
+}
+
+.people-table table tr td:first-of-type {
+  width: 5%;
+}
+
+.people-table table tr td:last-of-type {
+  width: 50%;
+}
+
+.people-table table tr td button + button {
+  margin-left: 1em;
+}
+
+.people-table table tr td button + button {
+  margin-left: 1em;
+}
+
+form div {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  padding: .25em 0;
 }
 
-.App-link {
-  color: #61dafb;
+
+button,
+input {
+  -webkit-appearance: none;
+  border-width: 1px;
+  border-style: solid;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input {
+  border-color: #2e74b6;
+  background: #5d9bd5;
+  color: #fff;
+  max-width: 85%;
+}
+
+form div button {
+  background: #a5a5aa;
+}
+
+button {
+  color: #fff;
+  border-color: #66696e;
+}
+
+button:hover:not(.disabled) {
+  cursor: pointer;
+}
+
+.btn-del {
+  background: #ef7c32;
+}
+
+.btn-edit {
+  background: #000;
+}
+
+.btn-save {
+  background: #5d9bd7;
+}
+
+button:disabled,
+button:disabled:hover {
+  background: #ccc;
+  border-color: #999;
+  color: #999;
+  cursor:not-allowed;
 }
