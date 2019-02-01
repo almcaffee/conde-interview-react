@@ -98,24 +98,39 @@ input {
   border-color: #2e74b6;
   background: #5d9bd5;
   color: #fff;
-  max-width: 85%;
-}
-
-form div button {
-  background: #a5a5aa;
+  width: 85%;
+  max-width: 150px;
 }
 
 button {
   color: #fff;
   border-color: #66696e;
+  min-width: 100px;
+}
+
+button.sm {
+  min-width: 125px;
+  max-width: 125px;
+}
+
+button.lg {
+  min-width: 125px;
+  max-width: 200px;
 }
 
 button:hover:not(.disabled) {
   cursor: pointer;
 }
 
+.btn-can {
+  color: #d84f00;
+  background: #ebfe16;
+  border-color: #8c9801;
+}
+
 .btn-del {
   background: #ef7c32;
+  border-color: #d84f00;
 }
 
 .btn-edit {
@@ -123,7 +138,8 @@ button:hover:not(.disabled) {
 }
 
 .btn-save {
-  background: #5d9bd7;
+  background: #a3a6a8;
+  border-color: #5a6c80;
 }
 
 button:disabled,

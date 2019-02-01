@@ -9,13 +9,9 @@ export class PersonTable extends Component {
     };
   }
 
-  // Lift state/Call parent function
-  // clear active person to de-render input row
-  savePerson = () => {
-    if(this.props.validatePerson(this.state.activePerson)) {
-      this.props.savePerson(this.state.activePerson);
-      this.setState({ activePerson: null});
-    }
+  // Cancel the active edit
+  cancelEdit = () => {
+    this.setState({ activePerson: null });
   }
 
   // Dynamically change state variable based on input name
@@ -28,7 +24,7 @@ export class PersonTable extends Component {
 
   // Set state variable to initialize input row render
   editPerson = (p) => {
-    this.setState({ activePerson: p});
+    this.setState({ activePerson: p });
   }
 
   // Render row as text or inputs based on active person
@@ -42,7 +38,7 @@ export class PersonTable extends Component {
           <td><input type="text" name="city" id="city" defaultValue={ p.city } onChange={this.handleChange} /></td>
           <td>
             <button className="btn-save" onClick={this.savePerson}>Save</button>
-            <button className="btn-del" onClick={() => this.removePerson(p.id)}>Delete</button>
+            <button className="btn-can" onClick={this.cancelEdit}>Cancel</button>
           </td>
         </React.Fragment> );
     } else {
@@ -64,6 +60,15 @@ export class PersonTable extends Component {
   // Lift state/Call parent function
   removePerson = (id) => {
     this.props.removePerson(id);
+  }
+
+  // Lift state/Call parent function
+  // clear active person to de-render input row
+  savePerson = () => {
+    if(this.props.validatePerson(this.state.activePerson)) {
+      this.props.savePerson(this.state.activePerson);
+      this.setState({ activePerson: null});
+    }
   }
 
   render() {

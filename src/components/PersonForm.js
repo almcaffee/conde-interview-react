@@ -49,7 +49,7 @@ export class PersonForm extends Component {
             <input type="text" name="city" id="city" onChange={this.handleChange} />
           </div>
           <div className="submit-btn">
-            <button type="submit" id="submit-btn" className={ !this.props.validatePerson(this.state.person) ? 'btn-disabled' : '' } disabled={!this.props.validatePerson(this.state.person)}>Add Person</button>
+            <button type="submit" className={ !this.props.validatePerson(this.state.person) ? 'lg btn-save btn-disabled' : 'lg btn-save' } disabled={!this.props.validatePerson(this.state.person)}>Add Person</button>
           </div>
         </form>
       </div>
