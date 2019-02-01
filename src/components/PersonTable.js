@@ -10,24 +10,28 @@ export class PersonTable extends Component {
   }
 
   // Cancel the active edit
+  // Clear the edited person from storage
   cancelEdit = () => {
+    localStorage.clear();
     this.setState({ activePerson: null });
   }
 
-  // Dynamically change state variable based on input name
+  // Change property of stored edited person based on input name
   handleChange = (event) => {
     event.preventDefault();
     let person = this.getEditedPerson();
     person[event.nativeEvent.target.name] = event.nativeEvent.target.value;
-    localStorage.setItem('person', JSON.stringify(person));
+    this.setEditedPerson(person);
   }
 
   // Set state variable to initialize input row render
+  // Set person to edit in storage as the active person
   editPerson = (p) => {
-    localStorage.setItem('person', JSON.stringify(p));
+    this.setEditedPerson(p);
     this.setState({ activePerson: p });
   }
 
+  // get person from localStorage
   getEditedPerson = () => {
     return JSON.parse(localStorage.getItem('person'));
   }
@@ -45,7 +49,8 @@ export class PersonTable extends Component {
             <button className="btn-save" onClick={this.savePerson}>Save</button>
             <button className="btn-can" onClick={this.cancelEdit}>Cancel</button>
           </td>
-        </React.Fragment> );
+        </React.Fragment>
+      );
     } else {
       return (
         <React.Fragment>
@@ -68,12 +73,17 @@ export class PersonTable extends Component {
   }
 
   // Lift state/Call parent function
-  // clear active person to de-render input row
+  // Clear active person to de-render input row
   savePerson = () => {
     if(this.props.validatePerson(this.getEditedPerson())) {
       this.props.savePerson(this.getEditedPerson());
       this.setState({ activePerson: null });
     }
+  }
+
+  // Store person
+  setEditedPerson = (p) => {
+    localStorage.setItem('person', JSON.stringify(p));
   }
 
   render() {
