@@ -5,7 +5,7 @@ export class PersonTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activePerson: null
+      activePerson: null,
     };
   }
 
@@ -17,14 +17,19 @@ export class PersonTable extends Component {
   // Dynamically change state variable based on input name
   handleChange = (event) => {
     event.preventDefault();
-    let person = this.state.activePerson;
+    let person = this.getEditedPerson();
     person[event.nativeEvent.target.name] = event.nativeEvent.target.value;
-    this.setState({ activePerson: person });
+    localStorage.setItem('person', JSON.stringify(person));
   }
 
   // Set state variable to initialize input row render
   editPerson = (p) => {
+    localStorage.setItem('person', JSON.stringify(p));
     this.setState({ activePerson: p });
+  }
+
+  getEditedPerson = () => {
+    return JSON.parse(localStorage.getItem('person'));
   }
 
   // Render row as text or inputs based on active person
@@ -65,13 +70,16 @@ export class PersonTable extends Component {
   // Lift state/Call parent function
   // clear active person to de-render input row
   savePerson = () => {
-    if(this.props.validatePerson(this.state.activePerson)) {
-      this.props.savePerson(this.state.activePerson);
-      this.setState({ activePerson: null});
+    if(this.props.validatePerson(this.getEditedPerson())) {
+      this.props.savePerson(this.getEditedPerson());
+      this.setState({ activePerson: null });
     }
   }
 
   render() {
+
+    const { people } = this.props;
+
     return (
       <div className="people-table">
         <table>
@@ -86,7 +94,7 @@ export class PersonTable extends Component {
           </thead>
           <tbody>
           {
-            this.props.people.map((p, i) => (
+            people.map((p, i) => (
               <tr key={i}>
                 { this.renderRow(p) }
               </tr>
